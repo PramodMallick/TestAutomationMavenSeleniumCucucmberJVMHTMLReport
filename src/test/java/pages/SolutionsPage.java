@@ -12,8 +12,8 @@ public class SolutionsPage extends Base {
 
     JavascriptExecutor js = ((JavascriptExecutor) driver);
 
-    @FindBy(css = ".utility-nav__cart-icon")
-    public WebElement cartIcon;
+//    @FindBy(css = ".utility-nav__cart-icon")
+//    public WebElement cartIcon;
 
     public SolutionsPage() {
         PageFactory.initElements(driver, this);
