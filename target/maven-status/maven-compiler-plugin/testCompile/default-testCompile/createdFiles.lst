@@ -1,0 +1,7 @@
+config/Base.class
+pages/SolutionsPage.class
+stepdefs/ServiceHooks.class
+stepdefs/StepDefinitions.class
+pages/ElLoginPage.class
+pages/HomePage.class
+TestRunner.class
