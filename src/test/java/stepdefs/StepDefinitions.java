@@ -8,13 +8,17 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pages.AboutPage;
 import pages.HomePage;
 import pages.SolutionsPage;
+
+import java.util.List;
 
 public class StepDefinitions extends Base {
 
     private HomePage homePage = new HomePage();
     private SolutionsPage solutionsPage = new SolutionsPage();
+    private AboutPage aboutPage = new AboutPage();
 
 
 //    private ElLoginPage elLoginPage =new ElLoginPage();
@@ -28,29 +32,11 @@ public class StepDefinitions extends Base {
 
     }
 
-//    @When("^I fill in \"([^\"]*)\" with \"([^\"]*)\"$")
-//    public void i_fill_in_with(String arg1, String arg2) throws Throwable {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
-//    }
-//
-//    @When("^I click on the \"([^\"]*)\" button$")
-//    public void i_click_on_the_button(String arg1) throws Throwable {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
-//    }
-//
     @Then("^I should see \"([^\"]*)\" message$")
     public void i_should_see_message(String arg1) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
-//
-//    @Then("^I should see the \"([^\"]*)\" button$")
-//    public void i_should_see_the_button(String arg1) throws Throwable {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
-//    }
 
     @When("^I navigate to \"([^\"]*)\" page from top menu bar$")
     public void i_navigate_to_page_from_top_menu_bar(String arg1) throws Throwable {
@@ -75,13 +61,24 @@ public class StepDefinitions extends Base {
     }
 
     @Then("^below sections would be listed in \"([^\"]*)\" page$")
-    public void below_sections_would_be_listed_in_page(String arg1, DataTable arg2) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
-        // E,K,V must be a scalar (String, Integer, Date, enum etc)
+    public void below_sections_would_be_listed_in_page(String pageName, DataTable listOfSections) throws Throwable {
 
 //        List<String> listOfSetion = arg1.asList();
+        String page = pageName;
+        List<String> data = listOfSections.asList(String.class);
+
+
+        if (page == "Solutions")
+        {
+            solutionsPage.verifySectionsAvailable(data);
+
+        }
+        else if (page == "About")
+        {
+            aboutPage.verifySectionsAvailable(data);
+
+        }
+
 
 
     }

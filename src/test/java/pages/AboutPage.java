@@ -1,5 +1,6 @@
 package pages;
 
+
 import config.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,7 +13,8 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class SolutionsPage extends Base {
+public class AboutPage extends Base {
+
 
     JavascriptExecutor js = ((JavascriptExecutor) driver);
 
@@ -26,7 +28,7 @@ public class SolutionsPage extends Base {
     public WebElement Solutions_Education;
 
 
-    public SolutionsPage() {
+    public AboutPage() {
         PageFactory.initElements(driver, this);
     }
 
@@ -44,8 +46,6 @@ public class SolutionsPage extends Base {
             String sectionXPath = "//h2[text()='" + sectionName + "']";
 
             System.out.println("Verifying for exist " + sectionName);
-
-//            WebElement elm = driver.findElement((By.xpath(sectionXPath));
 
             // explicit wait condition
             WebDriverWait w = new WebDriverWait(driver,3);
