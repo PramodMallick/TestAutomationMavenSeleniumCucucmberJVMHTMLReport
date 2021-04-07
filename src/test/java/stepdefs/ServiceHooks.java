@@ -37,6 +37,16 @@ public class ServiceHooks extends Base {
     @After
     public static void tearDown(Scenario scenario) {
 
+//        if (scenario.getStatus().equalsIgnoreCase("failed")) {
+//            try {
+//                File scrFile = getScreenShotFile();
+//                byte[] data = FileUtils.readFileToByteArray(scrFile);
+//                scenario.embed(data, "image/png");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+
         if (scenario.isFailed()) {
             try{
                 byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
@@ -45,7 +55,6 @@ public class ServiceHooks extends Base {
                 e.printStackTrace();
             }
         }
-
 
         System.out.println("From quit "+driver);
         driver.quit();

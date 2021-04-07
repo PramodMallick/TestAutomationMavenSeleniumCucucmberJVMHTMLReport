@@ -42,8 +42,9 @@ public class HomePage extends Base {
         Assert.assertEquals(expValue, actual);
     }
 
-    public void navigateToHomePage(String url){
+    public void navigateToHomePage(String url) throws InterruptedException {
         driver.get(url);
+        Thread.sleep(1000);
     }
 
 }

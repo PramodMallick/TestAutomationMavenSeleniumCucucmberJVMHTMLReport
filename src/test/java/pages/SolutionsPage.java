@@ -25,7 +25,6 @@ public class SolutionsPage extends Base {
     @FindBy(xpath = "//h2[text()='Education']")
     public WebElement Solutions_Education;
 
-
     public SolutionsPage() {
         PageFactory.initElements(driver, this);
     }
@@ -38,20 +37,19 @@ public class SolutionsPage extends Base {
 
     public void verifySectionsAvailable(List<String> data){
 
-        for (int x =0; x<= data.size(); x++){
+        for (int x =0; x<= data.size() - 1; x++){
+
+            System.out.println("Verifying for exist " + data.get(x));
 
             String sectionName = data.get(x);
             String sectionXPath = "//h2[text()='" + sectionName + "']";
 
-            System.out.println("Verifying for exist " + sectionName);
-
-//            WebElement elm = driver.findElement((By.xpath(sectionXPath));
+//          WebElement elm = driver.findElement((By.xpath(sectionXPath));
 
             // explicit wait condition
             WebDriverWait w = new WebDriverWait(driver,3);
             // presenceOfElementLocated condition
             w.until(ExpectedConditions.presenceOfElementLocated (By.xpath(sectionXPath)));
-
 
         }
 

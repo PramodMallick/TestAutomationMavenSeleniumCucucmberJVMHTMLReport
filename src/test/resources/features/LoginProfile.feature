@@ -6,17 +6,17 @@ Feature: Login Profile
 
   Background: User navigates to Company home page
     Given I am on the "Company home" page on URL "https://www.burning-glass.com/uk"
-    Then I should see "Burning Glass Technologies" message
+    Then I should see "Burning Glass Technologies United Kingdom" message
 
   Scenario: Navigate to Solutions page
     When I navigate to "Solutions" page from top menu bar
     Then I should have landed in "Solutions" page
     And below sections would be listed in "Solutions" page
-      | Corporations             |
+      | Corporations            |
       | Education                |
       | Government and Workforce |
       | Recruiting and Staffing  |
-      | Strategic Partnerships   |
+      | Strategic Partnerships  |
 
   Scenario: Verify Navigate to About page
     When I navigate to "About" page from top menu bar

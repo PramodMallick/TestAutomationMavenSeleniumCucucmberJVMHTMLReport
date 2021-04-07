@@ -8,6 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import pages.AboutPage;
 import pages.HomePage;
 import pages.SolutionsPage;
@@ -33,20 +34,23 @@ public class StepDefinitions extends Base {
     }
 
     @Then("^I should see \"([^\"]*)\" message$")
-    public void i_should_see_message(String arg1) throws Throwable {
+    public void i_should_see_message(String expectedHeading) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+//        throw new PendingException();
+        String actualHeading = driver.findElement(By.xpath("//h1[@class='et_pb_module_header']")).getText();
+        Assert.assertEquals(expectedHeading.trim(),actualHeading.replace("\n", " "));
+
     }
 
     @When("^I navigate to \"([^\"]*)\" page from top menu bar$")
     public void i_navigate_to_page_from_top_menu_bar(String arg1) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        if (arg1 == "Solutions")
+        if (arg1.equalsIgnoreCase("Solutions"))
         {
             WebElement elmAbout = driver.findElement(By.xpath("//a[@class='ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only']"));
             elmAbout.click();
         }
-        else if(arg1 == "About"){
+        else if(arg1.equalsIgnoreCase("About")){
             WebElement elmAbout = driver.findElement(By.xpath("//a[@class='ubermenu-target ubermenu-item-layout-default ubermenu-item-layout-text_only']"));
             elmAbout.click();
 
@@ -63,23 +67,18 @@ public class StepDefinitions extends Base {
     @Then("^below sections would be listed in \"([^\"]*)\" page$")
     public void below_sections_would_be_listed_in_page(String pageName, DataTable listOfSections) throws Throwable {
 
-//        List<String> listOfSetion = arg1.asList();
         String page = pageName;
         List<String> data = listOfSections.asList(String.class);
 
-
-        if (page == "Solutions")
+        if (page.equalsIgnoreCase("Solutions"))
         {
             solutionsPage.verifySectionsAvailable(data);
-
         }
-        else if (page == "About")
+        else if (page.equalsIgnoreCase("About"))
         {
             aboutPage.verifySectionsAvailable(data);
 
         }
-
-
 
     }
 
